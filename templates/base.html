@@ -1,0 +1,113 @@
+
+<!DOCTYPE HTML>
+<html>
+{% load cms_tags %}
+<head>
+        <title>{% page_attribute page_title %}</title>
+        <link rel="stylesheet" href="{{ MEDIA_URL }}/css/style.css" type="text/css" media="screen" charset="utf-8">
+        <meta name="description" content="{% page_attribute meta_description %}"/>
+        <meta name="keywords" content="{% page_attribute meta_keywords %}"/>
+        <script type="text/javascript" src="http://use.typekit.com/fup8uby.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        
+</head>
+<body class="{% block body_class %}home{% endblock %}">
+<div id="content">
+    
+<header class="container_24 clearfix">
+        <h1 id="logo" class="grid_4"><a href="#">KIPP Endeavor Academ</a></h1>
+        <nav class="grid_20">
+        <span class="enroll"><a href="#">Enroll Online</a> <span>or</span> <a href="#">Get Involved</a></span>
+            <div class="clear"></div>
+            <ul>
+                <li><a href="#">About KIPP Endeavor</a></li>
+                <li><a href="#">Students &amp; Families</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+</header>
+{% block content %}
+<section id="branding" class="container_24 clearfix">
+            <div class="grid_7 suffix_1">
+                <h1>Work hard.<br />Play nice.</h1>
+                <p>Hello and welcome to KIPP Endeavor Academy (KEA) - a free public charter school. KIPP Endeavor Academy currently serves approximately 200 students from around Kansas City's urban core.</p>
+                <a href="#">Read more about KEA</a>
+            </div>
+            <div class="grid_16">
+                    <img src="{{ MEDIA_URL }}/images/photo_home-branding.jpg" alt="KIPP Endeavor Academ">
+            </div>
+</section>
+<section id="news" >
+<h2 class="tagline">Be the change you wish to see in the world. -Ghandi</h2>  
+<div class="container_24 clearfix">
+<div id="content" class="grid_7 suffix_1">
+        <h2>Mission <span class="amp">&amp;</span> Vision</h2>
+        {% placeholder content %}
+</div>
+<div id="left_column" class="grid_7 suffix_1">
+        <h2>News <span class="amp">&amp;</span> Events</h2>
+        {% placeholder left_column %}
+</div>
+<div id="name" class="grid_8">
+        <h2>Facts <span class="amp">&amp;</span> Figures</h2>
+</div>
+</div>
+
+</section>
+
+{% endblock %}
+</div>
+<footer>
+    <div class="container_24 clearfix">
+        <nav class="grid_12">
+        <div class="grid_4">
+            <ul>
+                <li><a href="#">About KIPP Endeavor</a></li>
+                <li><a href="#">Students & Families</a></li>
+                <li><a href="#">News & Events</a></li>
+                <li><a href="#">Volunteer At KIPP</a></li>
+            </ul>
+        </div> 
+        <div class="grid_4">
+            <ul>
+                <li><a href="#">Enroll Online</a></li>
+                <li><a href="#">Download Form</a></li>
+                <li><a href="#">Teach at KIPP</a></li>
+                <li><a href="#">PowerSchool Login</a></li>
+            </ul>
+        </div>
+        <div class="grid_3">
+            <ul>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Support KIPP</a></li>
+            </ul>
+        </div>
+        </nav>
+        <div class="contact-info grid_9">
+             <div class="grid_4 suffix_1">
+                <p>
+                <span>KIPP Endeavor Academy</span>
+                <span>2700 East 18th Street</span>
+                <span>Kansas City, MO 64127</span>
+                <a href="#">See Map</a>
+                </p>
+            </div>     
+            <div class="grid_3">
+                <p>
+                <span>P 816 241 3994</span> 
+                <span>F 816 241 3339</span>
+                </p>
+            </div> 
+        </div>
+        <a href="#" class="logo"></a>
+        <p class="copyright first">
+            KIPP is committed to a policy of equal treatment for all individuals. KIPP does not discriminate on the basis of race, color, gender, handicap, age, religion, sexual orientation, national, or ethnic origin.
+        </p>
+        <p class="copyright">
+            &copy; KIPP Endeavor Academy 2010 All Rights Reserved&mdash;A <a href="http://designiseasy.com">Design Is Easy</a> &amp; <a href="threadsafelabs.com">Threadsafe Labs</a> Experience
+        </p>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,5 @@
+[attr]binary -crlf -diff -merge
+*.jpg binary
+*.png binary
+*.gif binary
+
