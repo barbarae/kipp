@@ -1,0 +1,317 @@
+{% extends "admin/filer/base_site.html" %}
+{% load i18n %}
+{% load adminmedia filermedia %}
+
+{% block extrahead %}{{ block.super }}
+<!-- this is end of super -->
+<link href="{% admin_media_prefix %}css/changelists.css" type="text/css" rel="stylesheet">
+
+<script type="text/javascript" src="{% admin_media_prefix %}js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="{% filer_staticmedia_prefix %}js/popup_handling.js"></script>
+
+{# upload stuff #}
+<script type="text/javascript" src="{% filer_staticmedia_prefix %}js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="{% filer_staticmedia_prefix %}lib/jquery/extensions/jquery.hotkeys.js"></script>
+<script type="text/javascript" src="{% filer_staticmedia_prefix %}lib/jsTree/jquery.tree.js"></script>
+<script type="text/javascript" src="{% filer_staticmedia_prefix %}lib/jsTree/plugins/jquery.tree.hotkeys.js"></script>
+<script type="text/javascript" src="{% filer_staticmedia_prefix %}lib/jsTree/plugins/jquery.tree.contextmenu.js"></script>
+
+{% endblock %}
+
+{# {% block coltype %}colMS{% endblock %} #}
+{% block bodyclass %}change-list filebrowser{% endblock %}
+
+
+{% block extrastyle %}{{ block.super }}
+{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+	<a href="{% url admin:index %}">Home</a> › <a href="{% url admin:app_list app_label="filer" %}">Filer</a>
+</div>
+{% endblock %}
+
+
+{% block sidebar %}
+{% endblock %}
+
+
+{% block content_title %}<h1>Hi there</h1>
+{% endblock %}
+{% block content %}
+<style type="text/css">
+	/* special hidden icons for categories (and no spacing for children) */
+	.tree a.noicon ins { display: none; }
+	.tree a.noicon { color: #666666; }
+	.tree li.noicon>ul { margin-left:0; } 
+	.tree li.noicon>ul>li.leaf { padding-left:0; }
+	
+	/* make the filebrowser fill the screen */
+	html,body {height:100%;}
+	#browser_container {height:300px}
+	#changelist {height: 100%;}
+	
+	/* fixes to re-use django styled stuff */
+	.toolbar {
+		padding: 3px;
+		border-top: 1px solid #CCCCCC;
+	}
+	.toolbar .object-tools {
+		padding: 0;
+		margin: 0;
+		float: none;
+	}
+	
+	/* the trees */
+	#category_tree_container, #folder_tree_container, #other_tree_container {
+		height: 100%;
+		width: auto;
+		min-width: 200px;
+		border-right: 1px solid #CCCCCC;
+		float:left;
+		position: relative;
+		overflow-y: scroll;
+	}
+	#category_tree_container {
+		background-color: #EDF3FE;
+	}
+	.category_tree, .folder_tree {
+		padding: 3px;
+	}
+	
+	/* django style coloring */
+	.tree-apple li a.clicked, 
+	.tree-apple li a.clicked:hover, 
+	.tree-apple li span.clicked {
+		background-color: #7CA0C7;
+		border-color: #7CA0C7;
+	}
+</style>
+
+<div id="content-main">
+	<ul class="object-tools">
+		<li><a id="id_new_folder" href="#" class="addlink">{% trans "Do something" %}</a></li>
+    </ul>
+	
+    <div class="module" id="changelist">
+    	<div id="toolbar">
+    		This is where the search stuff will be
+    	</div>
+		<div id="browser_container">
+			<script type="text/javascript" class="source">
+			var default_tree_options = {
+					plugins : {
+						hotkeys: {},
+						contextmenu: {}
+					},
+					data: { 
+						type : "json",
+						async : true,
+						opts : {
+							method : "GET",
+							url : "{% url admin:filer-directory_browser-getchildren %}"
+						}
+					},
+					callback: { 
+						onmove: function(node, ref_node, type, tree_obj, rb){
+							//alert("moving '" + tree_obj.get_text(node) + "' (" + rb + ") to '" + tree_obj.get_text(ref_node)+"'");
+							$.ajax({
+								type:'POST',
+								dataType: 'json',
+								url: '{% url admin:filer-directory_browser-move %}',
+								data: { 'src_objtype': tree_obj.get_type(node), 
+										'src_id': tree_obj.get_node(node).attr('id'),
+										'ref_objtype': tree_obj.get_type(ref_node),
+										'ref_id': tree_obj.get_node(ref_node).attr('id'),
+										'ref_type': type
+								},
+								async: true,
+								success: function(data, textStatus, request) {
+									//alert('success: ' + textStatus + '   ' + data);
+								},
+								error: function(request, textStatus, errorThrown) {
+									//alert('failed: ' + textStatus + '    ' + errorThrown);
+									$.tree.rollback(rb);
+								}
+							}
+							);
+						},
+						onrename: function(node, tree_obj, rb){
+							//alert("renaming '" + tree_obj.get_text(node) + "' (" + rb + ") to '" + tree_obj.get_text(ref_node)+"'");
+							$.ajax({
+								type:'POST',
+								dataType: 'json',
+								url: '{% url admin:filer-directory_browser-rename %}',
+								data: { 'obj_type': tree_obj.get_type(node), 
+										'obj_id': tree_obj.get_node(node).attr('id'),
+										'obj_new_name': tree_obj.get_text(node)
+								},
+								async: true,
+								success: function(data, textStatus, request) {
+									//alert('success: ' + textStatus + '   ' + data);
+								},
+								error: function(request, textStatus, errorThrown) {
+									//alert('failed: ' + textStatus + '    ' + errorThrown);
+									$.tree.rollback(rb);
+								}
+							}
+							);
+						},
+						oncreate: function(node, ref_node, type, tree_obj, rb){
+							console.log(node);
+							$.ajax({
+								type:'POST',
+								dataType: 'json',
+								url: '{% url admin:filer-directory_browser-create %}',
+								data: { 'node_type': tree_obj.get_type(node),
+										'node_name':tree_obj.get_text(node), 
+										'ref_node_id': tree_obj.get_node(ref_node).attr('id'),
+										'ref_node_type': tree_obj.get_type(ref_node),
+										'ref_node_rel': type
+								},
+								async: true,
+								success: function(data, textStatus, request) {
+									//alert('success: ' + textStatus + '   ' + data);
+								},
+								error: function(request, textStatus, errorThrown) {
+									//alert('failed: ' + textStatus + '    ' + errorThrown);
+									$.tree.rollback(rb);
+								}
+							}
+							);
+						},
+						ondata: function(data, tree_obj) {
+							return data
+						}
+					},
+					rules :{
+					},
+					types: {
+						"default": {
+							deletable: false,
+							renameable: false
+						},
+						"category": {
+							draggable: false,
+							deletable: false,
+							valid_children: ["folder"]
+						},
+						"category_item": {
+							
+						},
+						"folder": {
+							valid_children: ["file","folder"],
+							renameable: true
+						},
+						"file": {
+							valid_children: "none",
+							max_children: 0,
+							max_depth: 0,
+							icon: {
+								image: "/media/filer/icons/file_16x16.png"
+							},
+							renameable: true
+						}
+					},
+					ui: {
+						theme_name : "apple",
+						dots: false
+					}
+				};
+			function build_tree_options_for_initial_data(initial_data) {
+				var initial_options = default_tree_options
+				var the_beforedata_callback = function (n, t) { 
+					// Take care of refresh calls - n will be false only when the whole tree is refreshed or loaded of the first time
+					// Make sure static is not used once the tree has loaded for the first time
+					if(n == false) {
+						t.settings.data.opts.static = initial_data;
+					} else { 
+						t.settings.data.opts.static = false;
+						return { id : $(n).attr("id") || 0 };
+					}
+				}
+				var new_options = initial_options
+				new_options.callback.beforedata = the_beforedata_callback;
+				return new_options;
+			};
+			//console.log(build_tree_options_for_initial_data(categories_data));
+			$(function () { 
+				var categories_data = {{ categories_json|safe }};
+				var categories_options = build_tree_options_for_initial_data(categories_data);
+				categories_options.callback.onchange = function(node, tree_obj){
+					var folder_id = $(node).attr('id');
+					var the_data_callback = function(data, textStatus) {
+						$("#folder_tree").tree(build_tree_options_for_initial_data(data));
+					};
+					$.getJSON("{% url admin:filer-directory_browser-getchildren %}",{'id':folder_id},the_data_callback)
+					//var folder_id = node.attr('id');
+					//alert(folder_id);
+					//$('#sa_json_2').tree()
+				};
+				categories_options.selected = '{{ categories_initial_selected }}';
+				$("#category_tree").tree(categories_options);
+			});
+			</script>
+			<div id="category_tree_container">
+				<div class="category_tree" id="category_tree" style=""></div>
+			</div>
+		
+		
+		
+		
+			
+			<script type="text/javascript" class="source">
+			$(function () { 
+				var folders_data = {{ folders_json|safe }};
+				var folders_options = build_tree_options_for_initial_data(folders_data);
+				folders_options.callback.onchange = function(){
+					//console.log('focus changed');
+				}
+				$("#folder_tree").tree(folders_options);
+			});
+			</script>
+			<div id="folder_tree_container">
+				<div class="folder_tree" id="folder_tree" style=""></div>
+			</div>
+			
+			
+			<script type="text/javascript" class="source">
+			$(function () { 
+				{# var folders_data = {{ categories_json|safe }}; #}
+				//var folders_options = build_tree_options_for_initial_data(folders_data);
+				var folders_options = default_tree_options
+				folders_options.callback.ondata = function(data, tree_obj) {
+					console.log(data)
+					return data
+				}
+				folders_options.data.opts.url = '/admin/filer/folder/api/folder/json/';
+				//$("#other_tree").tree(folders_options);
+				$("#other_tree").tree( {
+					data: {
+						type: 'json',
+						async: true,
+						opts: {
+							method: "GET",
+							url: '/admin/filer/folder/api/folder/json/'
+						}
+					}
+				} );
+			});
+			</script>
+			<div id="other_tree_container">
+				<div class="folder_tree" id="other_tree" style=""></div>
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+		<div id="browser_footer" class="toolbar">
+			<ul class="object-tools">
+				<li><a href="" class="addlink">add Folder</a></li>
+			</ul>
+			<div style="clear:both;"></div>
+		</div>
+    </div>
+	<input type="button" onclick="$.tree.focused().rename();" value="Simple rename">
+{# <pre>{{ folders_dict|pprint }}</pre><pre>{{ categories_dict|pprint }}</pre> #}
+</div>
+
+{% endblock %}

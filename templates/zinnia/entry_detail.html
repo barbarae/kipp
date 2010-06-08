@@ -1,0 +1,111 @@
+{% extends "zinnia/base.html" %}
+{% load i18n tagging_tags comments zinnia_tags %}
+
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block meta-description %}{% if object.excerpt %}{{ object.excerpt|striptags }}{% else %}{{ object.content|striptags|truncatewords:100 }}{% endif %}{% endblock %}
+
+{% block link %}
+  <link rel="alternate" type="application/rss+xml" title="{% trans "RSS Feed of comments on" %} '{{ object.title }}'" href="{% url zinnia_feeds "comments" %}{{ object.slug }}/" />
+{% endblock %}
+
+{% block content %}
+<div class="entry span-16 last">
+  {% with object.html_content|safe as object_content %}
+  {% include "zinnia/_entry_detail.html" %}
+  {% endwith %}
+</div>
+
+<hr />
+
+<div class="entryWidgets span-16 last">
+  {% if object.next_entry %}
+  <div class="entryNext">
+    <h3>{% trans "Next entry" %}</h3>
+    <ul>
+      <li>
+	<a href="{{ object.next_entry.get_absolute_url }}" title="{{ object.next_entry.title }}">
+	  {{ object.next_entry.title }}
+	</a>
+      </li>
+    </ul>
+  </div>
+  {% endif %}
+  {% if object.previous_entry %}
+  <div class="entryPrevious">
+    <h3>{% trans "Previous entry" %}</h3>
+    <ul>
+      <li>
+	<a href="{{ object.previous_entry.get_absolute_url }}" title="{{ object.previous_entry.title }}">
+	  {{ object.previous_entry.title }}
+	</a>
+      </li>
+    </ul>
+  </div>
+  {% endif %}
+  {% if object.related_published_set %}
+  <div class="entryRelated">
+    <h3>{% trans "Related entries" %}</h3>
+    <ul>
+      {% for entry in object.related_published_set %}
+      <li>
+	<a href="{{ entry.get_absolute_url }}" title="{{ entry.title }}">{{ entry.title }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  <div class="entrySimilar">
+    <h3>{% trans "Similar entries" %}</h3>
+    {% get_similar_entries 5 %}
+  </div>
+</div>
+
+<hr />
+
+<div id="comments" class="span-16 last">
+  <h3>{% trans "Comments" %}</h3>
+  {% with object.comments as comment_list %}
+  {% if comment_list.count %}
+  <ol id="commentList" class="span-15 last">
+    {% for comment in comment_list %}
+    <li id="comment_{{ comment.pk }}" class="comment {% cycle box1,box2 %} span-15 last">
+      <div class="span-2">
+	<img src="{% get_gravatar comment.email 60 "G" %}" class="gravatar" alt="{{ comment.user_name }}"/>
+      </div>
+      <div class="comment_body span-13 last">
+	<div class="span-13 last">
+	  {% if comment.url %}
+	  <a href="{{ comment.url }}">{{ comment.user_name }}</a>
+	  {% else %}
+	  {{ comment.user_name }}
+	  {% endif %}
+	  {% trans "on date" %} {{ comment.submit_date|date:"l d F Y H:i" }}
+	</div>
+	<div class="span-13 last">
+	  <cite>
+	    {{ comment.comment }}
+	  </cite>
+	</div>
+      </div>
+    </li>
+    {% endfor %}
+  </ol>
+    {% if not object.comment_enabled %}
+  <p>{% trans "Comments are closed." %}</p>
+    {% endif %}
+  {% else %}
+    {% if object.comment_enabled %}
+  <p>{% trans "Not yet comments !" %}</p>
+    {% endif %}
+  {% endif %}
+  {% endwith %}
+</div>
+
+{% if object.comment_enabled %}
+<div class="commentForm span-16 last">
+  {% render_comment_form for object %}
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,69 @@
+{# TEST STUFF FOLLOWS #}
+
+<script type="text/javascript" class="source">
+$(function () { 
+	//var folders_options = build_tree_options_for_initial_data(folders_data);
+	//var folders_options = default_tree_options
+	var my_options = {
+		data: {
+			type: 'json',
+			async: true,
+			opts: {
+				method: "GET",
+				url: '/admin/filer/folder/api/folder/root/children/'
+			}
+		},
+		callback: {}
+	};
+	my_options.callback.ondata = function(data, tree_obj) {
+		var r = new Array();
+		$.each(
+			data,
+			function( i, v ){
+				x = {"attributes":{"id":v.id,"rel":v.type},"data":{"title":v.name}}
+				if (v.item_count>0) {
+					x.state = "closed";
+				};
+				r[i] = x;
+			}
+		);
+		return r
+	};
+	my_options.callback.beforedata = function(n,t) {
+		if (n == false) {
+			// the first time loading
+			t.settings.data.opts.url = "/admin/filer/folder/api/folder/root/children/";
+			return {}
+		} else {
+			//return { id : $(n).attr("id") || 0 };
+			var id = $(n).attr("id") || 0;
+			t.settings.data.opts.url = "/admin/filer/folder/api/folder/" + id + "/children/";
+			return {}	
+		}
+	}
+	$("#other_tree").tree( my_options );
+});
+</script>
+<div id="other_tree_container">
+	<div class="folder_tree" id="other_tree" style=""></div>
+</div>
+
+
+
+
+
+
+	var itemGroupData = [
+		{
+			data: {
+				title: "FOLDERS",
+				attributes: {class: "noicon"}
+			}
+			state: "open",
+			"attributes": {
+				id: "rootFoldersItemGroup",
+				class: "noicon",
+				rel: "category"
+			}
+		}
+	];

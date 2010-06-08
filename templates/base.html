@@ -29,26 +29,25 @@
 {% block content %}
 <section id="branding" class="container_24 clearfix">
             <div class="grid_7 suffix_1">
-                <h1>Work hard.<br />Play nice.</h1>
-                <p>Hello and welcome to KIPP Endeavor Academy (KEA) - a free public charter school. KIPP Endeavor Academy currently serves approximately 200 students from around Kansas City's urban core.</p>
-                <a href="#">Read more about KEA</a>
+                {% placeholder main_branding %}
             </div>
             <div class="grid_16">
-                    <img src="{{ MEDIA_URL }}/images/photo_home-branding.jpg" alt="KIPP Endeavor Academ">
+                    {% placeholder branding_image %}
             </div>
 </section>
 <section id="news" >
 <h2 class="tagline">Be the change you wish to see in the world. -Ghandi</h2>  
 <div class="container_24 clearfix">
-<div id="content" class="grid_7 suffix_1">
-        <h2>Mission <span class="amp">&amp;</span> Vision</h2>
-        {% placeholder content %}
+<div class="mission grid_7 suffix_1">
+        {% placeholder mission %}
 </div>
 <div id="left_column" class="grid_7 suffix_1">
-        <h2>News <span class="amp">&amp;</span> Events</h2>
-        {% placeholder left_column %}
+        {% placeholder middle_column_header %}
+        {% placeholder news_and_events %}
+
 </div>
 <div id="name" class="grid_8">
+        {% placeholder facts_and_figures %}
         <h2>Facts <span class="amp">&amp;</span> Figures</h2>
 </div>
 </div>

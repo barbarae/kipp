@@ -41,6 +41,16 @@ header nav li a{font-size:1.88em;color:#333333;text-transform:uppercase;text-dec
 body.home section#news{background: #fff; padding-bottom: 60px;}
 #news h2{margin: 40px 0 10px 0;font-size:1.875em; font-weight: normal;color:#c0a687;font-family:'LeagueGothicRegular',"Helvetica Neue",Helvetica,Arial,sans-serif; text-transform: uppercase;position: relative; z-index: 10; }
 #news h2 .amp{display: inline-block; background:#f1eade; -moz-border-radius: 16px;-webkit-border-radius:16px;padding: 3px 10px;margin: 0 -12px; z-index:-1; position: relative;}
+.mission p{line-height: 1.5; margin-bottom: 1em;}
+.entry .date{color: #9f9e9e; font-size:.75em; display: block;}
+.entry .title{color: #333333; text-decoration: none; font-weight: bold;}
+.entry .title:hover{border-bottom: 2px solid #f06d00;}
+.more{text-decoration: none;color: #f06d00; font-weight: bold; font-size: .75em;}
+.more:hover{ background: #f06d00; color: #fff; }
+.entry p, .entry p .caps{font-size: .75em; line-height: 1.3; margin-top: .5em;}
+.entry p .caps{font-size: 1em;}
+.entry {margin-bottom: 1em;}
+.read-all{font-size: .75em; color: #333;font-weight: bold;}
 h3{font-size:1.5em;height:34px;}
 h3 span{background:url(../images/bullet.png) -1px -1px no-repeat;display:inline-block;width:34px;height:34px;padding:11px;text-align:center;}
 

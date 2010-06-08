@@ -28,11 +28,11 @@ SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
-USE_I18N = True
+USE_I18N = False
 
 # If you set this to False, Django will not format dates, numbers and
 # calendars according to the current locale
-USE_L10N = True
+USE_L10N = False
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
@@ -41,7 +41,7 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '/media'
+MEDIA_URL = '/media/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -64,6 +64,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
         "django.core.context_processors.request",
         "django.core.context_processors.media",
         "cms.context_processors.media",
+        'zinnia.context_processors.media',
+        'image_filer.context_processors.media',
 )
 INTERNAL_IPS = ('127.0.0.1',) 
 MIDDLEWARE_CLASSES = (
@@ -76,6 +78,7 @@ MIDDLEWARE_CLASSES = (
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.user.CurrentUserMiddleware',
     'cms.middleware.media.PlaceholderMediaMiddleware',
+ 
 )
 
 LANGUAGE_CODE = 'en'
@@ -87,8 +90,8 @@ LANGUAGES = (
 ROOT_URLCONF = 'kipp.urls'
 
 CMS_TEMPLATES = (
-        ('base.html', gettext('default')),
-        ('home.html', gettext('Home page')),
+        ('page.html', gettext('default')),
+        ('base.html', gettext('Home page')),
         ('2col.html', gettext('2 Column')),
         ('3col.html', gettext('3 Column')),
         ('extra.html', gettext('Some extra fancy template')),
@@ -107,7 +110,10 @@ CMS_SOFTROOT = True
 CMS_MEDIA_PATH = "cms/"
 CMS_MEDIA_ROOT = MEDIA_ROOT + "/cms/"
 CMS_MEDIA_URL = "/media/cms/"
-CMS_PAGE_MEDIA_PATH = 'cms_page_media/'
+CMS_PAGE_MEDIA_PATH = '/media/cms_page_media/'
+ZINNIA_MEDIA_URL = "/media/zinnia/"
+IMAGE_FILER_UPLOAD_ROOT = '/media/catalogue/'
+
 
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_ROOT, 'templates'),
@@ -124,6 +130,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'django.contrib.comments',
     'debug_toolbar',
     'cms',
     'cms.plugins.text',
@@ -135,5 +142,10 @@ INSTALLED_APPS = (
     'mptt',
     'publisher',
     'menus',
-    'tinymce',
+    'typogrify',
+    'tagging',
+    'zinnia',
+    'zinnia.plugins',
+    'sorl.thumbnail',
+    'image_filer',
 )
