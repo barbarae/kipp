@@ -7,6 +7,7 @@ from django.contrib.sessions.models import Session
 from django.conf import settings
 from django.db.models import Q
 from django.core.exceptions import PermissionDenied
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
 
 from models import Folder, Image, Clipboard, ClipboardItem
 from models import tools
@@ -156,6 +157,7 @@ def edit_image(request, folder_id):
         }, context_instance=RequestContext(request))
 
 @login_required
+@csrf_protect
 def make_folder(request, folder_id=None):
     if not folder_id:
         folder_id = request.REQUEST.get('parent_id', None)
@@ -198,12 +200,14 @@ class UploadFileForm(forms.ModelForm):
 from image_filer.utils.files import generic_handle_file
 
 @login_required
+@csrf_protect
 def upload(request):
     return render_to_response('image_filer/upload.html', {
                     'title': u'Upload files',
                     'is_popup': popup_status(request),
                     }, context_instance=RequestContext(request))
 
+@csrf_exempt
 def ajax_upload(request, folder_id=None):
     """
     receives an upload from the flash uploader and fixes the session
@@ -214,6 +218,8 @@ def ajax_upload(request, folder_id=None):
     # flashcookie-hack (flash does not submit the cookie, so we send the
     # django sessionid over regular post
     try:
+       # import pdb
+        #pdb.set_trace()
         engine = __import__(settings.SESSION_ENGINE, {}, {}, [''])
         #session_key = request.POST.get('jsessionid')
         session_key = request.POST.get('jsessionid')

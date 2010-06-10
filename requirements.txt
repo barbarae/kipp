@@ -1,0 +1,10 @@
+PIL
+http://www.djangoproject.com/download/1.2-beta-1/tarball/
+http://pypi.python.org/packages/source/d/django-cms/django-cms-2.1.0.beta3.tar.gz
+http://django-evolution.googlecode.com/svn/trunk/
+django-reversion
+django-debug-toolbar
+django-form-utils
+sorl-thumbnail
+django-tagging
+

@@ -13,15 +13,15 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 	font-style: normal;
 }
 
-.enroll a,.enroll span,header nav li a,#branding h1{font-family:'LeagueGothicRegular',"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.enroll a,.enroll span,header nav li a,#branding h1, section.content h1{font-family:'LeagueGothicRegular',"Helvetica Neue",Helvetica,Arial,sans-serif;}
 
 /* HTML5 */
 header,nav,section,aside,footer{display:block;}
-
-body{font-family:Arial,sans-serif; color: #333;background:url(../images/buildings.png) center 155px repeat-x;}
-
+html {height: 100%;}
+body{min-height: 100%;font-family:Arial,sans-serif; color: #333;}
+body.home{background:url(../images/buildings.png) center 155px repeat-x;}
 html{background: #F4F0E6 url(../images/rays.jpg) center top no-repeat;border-top:10px solid #e8dcc8;}
-div#content{min-height: 100%; padding-bottom: 250px;margin-bottom: -250px;}
+div#content{min-height: 100%; height:auto; margin-bottom: -250px;padding-bottom:250px;}
 h1#logo a{display:block;width:108px;height:108px;text-indent:-9999px;background:url(../images/sprites.png) 0 0 no-repeat;margin-top:15px;}
 
 .enroll{float:right;background:#97daef;background: rgba(151,218,239,.95); position: relative; margin-top: -10px;}
@@ -71,4 +71,8 @@ footer a.logo{float: left; width:96px; height: 96px;display:block; background: u
 .copyright.first{clear:both; padding-top: 20px;}
 .copyright a{color:#f1730a; color:rgba(241,115,10,.4); }
 .copyright a:hover{background:#f1730a; }
+
+
+/* INTERNAL PAGES */
+section.content h1{color: #c0a687; font-size: 1.875em; font-weight: normal; text-transform: uppercase;}
 

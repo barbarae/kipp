@@ -48,6 +48,11 @@ MEDIA_URL = '/media/'
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/admin_media/'
 
+URL_FILEBROWSER_MEDIA = '/media/'
+FILEBROWSER_URL_FILEBROWSER_MEDIA = '/media/filebrowser/'
+FILEBROWSER_DIRECTORY = 'uploads/'
+FILEBROWSER_DEBUG = True
+
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '79m=eg)ookdws%fz%6*&@)n@n-j1)g(^07@wrqltq%6j)0boi&'
 
@@ -63,22 +68,23 @@ TEMPLATE_CONTEXT_PROCESSORS = (
         "django.core.context_processors.i18n",
         "django.core.context_processors.request",
         "django.core.context_processors.media",
+        'image_filer.context_processors.media',
         "cms.context_processors.media",
         'zinnia.context_processors.media',
-        'image_filer.context_processors.media',
 )
-INTERNAL_IPS = ('127.0.0.1',) 
+
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.user.CurrentUserMiddleware',
     'cms.middleware.media.PlaceholderMediaMiddleware',
- 
+    'cms.middleware.toolbar.ToolbarMiddleware', 
+    'django.middleware.locale.LocaleMiddleware',
 )
 
 LANGUAGE_CODE = 'en'
@@ -96,7 +102,7 @@ CMS_TEMPLATES = (
         ('3col.html', gettext('3 Column')),
         ('extra.html', gettext('Some extra fancy template')),
 )
-
+ZINNIA_MEDIA_URL = '/media/zinnia/'
 CMS_SHOW_END_DATE = True
 CMS_SHOW_START_DATE = True
 CMS_PERMISSION = True
@@ -107,12 +113,10 @@ CMS_SEO_FIELDS = True
 CMS_REDIRECTS = True
 CMS_SOFTROOT = True
 
-CMS_MEDIA_PATH = "cms/"
-CMS_MEDIA_ROOT = MEDIA_ROOT + "/cms/"
-CMS_MEDIA_URL = "/media/cms/"
-CMS_PAGE_MEDIA_PATH = '/media/cms_page_media/'
-ZINNIA_MEDIA_URL = "/media/zinnia/"
-IMAGE_FILER_UPLOAD_ROOT = '/media/catalogue/'
+DEBUG_TOOLBAR_CONFIG = {
+    "INTERCEPT_REDIRECTS" : False,
+}
+INTERNAL_IPS = ('127.0.0.1',)
 
 
 TEMPLATE_DIRS = (
@@ -148,4 +152,8 @@ INSTALLED_APPS = (
     'zinnia.plugins',
     'sorl.thumbnail',
     'image_filer',
+    'reversion',
+    'cmsplugin_faq',
+    'cmsplugin_youtube',
+    'contact',
 )

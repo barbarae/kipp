@@ -8,6 +8,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
     url(r'^comments/', include('django.contrib.comments.urls')),
+    (r'^admin/filebrowser/', include('filebrowser.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^news-and-events/', include('zinnia.urls')),
     url(r'^', include('cms.urls')),
