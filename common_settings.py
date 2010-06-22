@@ -144,6 +144,7 @@ INSTALLED_APPS = (
     'cms.plugins.snippet',
     'cms.plugins.googlemap',
     'mptt',
+    'kipp.utils',
     'publisher',
     'menus',
     'typogrify',

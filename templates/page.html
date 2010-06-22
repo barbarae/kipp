@@ -1,10 +1,10 @@
 {% extends "base.html" %}
-{% load cms_tags menu_tags cache %}
+{% load cms_tags menu_tags cache kipp %}
 {% block body_class %}{% page_attribute slug %}{% endblock %}
-{% block content %}
+{% block main_content %}
 <div class="content-wrap container_24 clearfix">
     <nav class="grid_5 suffix_1">
-        {% page_attribute "page_title" "students-families"%}
+        {% parent_page_title %}
         <ul>
        {% show_menu 1 1 0 100 %}  
         </ul>

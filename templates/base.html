@@ -5,11 +5,16 @@
 <head>
         <title>KIPP Endeavor Academy - {% page_attribute page_title %}</title>
         <link rel="stylesheet" href="{{ MEDIA_URL }}css/style.css" type="text/css" media="screen" charset="utf-8">
+        <link rel="shortcut icon" href="/favicon.ico" />
         <meta name="description" content="{% page_attribute meta_description %}"/>
         <meta name="keywords" content="{% page_attribute meta_keywords %}"/>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta http-equiv="cache-control" content="public" />
+        <meta name="robots" content="follow, all" />   
         <script type="text/javascript" src="http://use.typekit.com/fup8uby.js"></script>
         <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-        
+        {% block extra_head  %}
+        {% endblock %}
 </head>
 <body class="{% block body_class %}home{% endblock %}">
 <div id="content">
@@ -21,13 +26,10 @@
             <div class="clear"></div>
             <ul>
                 {% show_menu 0 0 0 0 %}
-                <li><a href="#">About KIPP Endeavor</a></li>
-                <li><a href="#">Students &amp; Families</a></li>
-                <li><a href="#">Contact Us</a></li>
             </ul>
         </nav>
 </header>
-{% block content %}
+{% block main_content %}
 <section id="branding" class="container_24 clearfix">
             <div class="grid_7 suffix_1">
                 {% placeholder main_branding %}

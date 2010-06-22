@@ -13,14 +13,14 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 	font-style: normal;
 }
 
-.enroll a,.enroll span,header nav li a,#branding h1, section.content h1{font-family:'LeagueGothicRegular',"Helvetica Neue",Helvetica,Arial,sans-serif;}
+.enroll a,.enroll span,header nav li a,#branding h1, section.content h1, .contact input[type="submit"]{font-family:'LeagueGothicRegular',"Helvetica Neue",Helvetica,Arial,sans-serif;}
 
 /* HTML5 */
 header,nav,section,aside,footer{display:block;}
 html {height: 100%;}
 body{min-height: 100%;font-family:Arial,sans-serif; color: #333;}
 body.home{background:url(../images/buildings.png) center 155px repeat-x;}
-html{background: #F4F0E6 url(../images/rays.jpg) center top no-repeat;border-top:10px solid #e8dcc8;}
+html{background: #F4F0E5 url(../images/rays.jpg) center top no-repeat;border-top:10px solid #e8dcc8;}
 div#content{min-height: 100%; height:auto; margin-bottom: -250px;padding-bottom:250px;}
 h1#logo a{display:block;width:108px;height:108px;text-indent:-9999px;background:url(../images/sprites.png) 0 0 no-repeat;margin-top:15px;}
 
@@ -33,7 +33,7 @@ header{border-bottom:6px solid #333;border-color:rgba(51,51,51,0.9);}
 header nav ul{float:right;margin-top:60px;}
 header nav li{float:left;margin-left:30px;}
 header nav li a{font-size:1.88em;color:#333333;text-transform:uppercase;text-decoration:none;display: block; padding-bottom: 10px;}
-#branding{margin-bottom: 15px;}
+#branding{margin-top: 5px ;margin-bottom: 15px ;}
 #branding h1{font-size:3.75em;color:#333333;text-transform:uppercase; margin-top:50px;}
 #branding p{font-size:0.88em;color:#333333;line-height:1.6; padding-bottom: 10px;}
 #branding a{background: #dac9b1; color: #fff; text-decoration: none; font-size: .88em; padding: 5px 14px; margin-top: 10px;}
@@ -75,4 +75,32 @@ footer a.logo{float: left; width:96px; height: 96px;display:block; background: u
 
 /* INTERNAL PAGES */
 section.content h1{color: #c0a687; font-size: 1.875em; font-weight: normal; text-transform: uppercase;}
+.content-wrap {padding-top: 15px;} 
+.content-wrap nav ul, .content-wrap nav h2{padding-left: 40px;}
+.content-wrap nav ul li a{color: #333333; text-transform: uppercase; font-size: .75em; display: block; text-decoration: none;padding:.325em 0; line-height: 1.4;}
+.content-wrap nav ul li a:hover,.content-wrap h2 a:hover, .entryTitle a:hover{text-decoration: underline;}
+.content-wrap h2, .content-wrap h2 a, .entryTitle a{text-decoration: none;color: #c0a687; text-transform: uppercase;font-size: .875em; padding-top:14px ;padding-bottom:14px ;}
+.content-wrap h2 a, .entryTitle a{font-size: 1em;}
+.content h1{padding-bottom: 14px;}
+.content p{font-size: .875em; line-height: 1.4; padding-bottom: 1em;}
+
+h2.students-families{background: url(../images/stud-fam.png) top left no-repeat;}
+h2.about-kipp-endeavor{background: url(../images/about.png) top left no-repeat;}
+
+.content-wrap h1{padding-top: 14px;}
+
+/* BLOG STYLES */
+h1.entryTitle{padding-bottom: 0; }
+.entryTitle a{font-size: .75em;}
+p.entryInfo{padding: 0; margin: 0 0 14px 0; font-size: .75em;}
+.entryInfo a, .entryBody a{text-decoration: none;color: #f06d00; font-weight: bold;}
+.entryInfo a:hover, .entryBody a:hover{ background: #f06d00; color: #fff; }
+
+
+/* FORMS */
+.contact li{overflow: hidden; margin-bottom: 10px; padding-bottom: 10px;}
+.contact label{margin-right: 10px; width: 100px; padding: 15px 5px 5px; text-transform: uppercase; font-size: .75em;}
+.contact label, .contact input{float: left;}
+.contact input, .contact textarea{border: 3px solid #e8dcc8; padding: 5px; width: 300px; font-size: 1.2em; }
+.contact input[type="submit"]{background: #97daef; border: none; text-transform: uppercase;font-size: 1.2em; color: #fff; cursor: pointer; margin-left: 120px;}
 

@@ -26,7 +26,8 @@ class ZinniaCalendar(HTMLCalendar):
         self.current_month = themonth
         self.day_entries = [entries.creation_date.day for entries in
                             Entry.published.filter(creation_date__year=theyear,
-                                                   creation_date__month=themonth)]
+                                                   creation_date__month=themonth,
+                                                   categories__title__contains="event")]
 
         return super(ZinniaCalendar, self).formatmonth(theyear, themonth, withyear)
 

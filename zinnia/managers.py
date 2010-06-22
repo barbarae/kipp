@@ -1,5 +1,7 @@
 """Managers of Zinnia"""
 from datetime import datetime
+from operator import attrgetter
+from itertools import chain
 
 from django.db import models
 from django.contrib.sites.models import Site
@@ -28,10 +30,13 @@ def authors_published():
 def entries_published(queryset):
     """Return only the entries published"""
     now = datetime.now()
-    return queryset.filter(status=PUBLISHED,
+    entries = queryset.filter(status=PUBLISHED,
                            start_publication__lte=now,
                            end_publication__gt=now,
                            sites=Site.objects.get_current())
+    events = queryset.filter(status=PUBLISHED,categories__title__contains="event",sites=Site.objects.get_current())
+    all_items = entries | events
+    return all_items.order_by('start_publication')
 
 
 class EntryPublishedManager(models.Manager):

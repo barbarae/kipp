@@ -119,7 +119,10 @@ class Entry(models.Model):
     @property
     def is_visible(self):
         """Check if an entry is visible on site"""
-        return self.is_actual and self.status == PUBLISHED
+        if self.categories.filter(title__contains="event"):
+            return self.status == PUBLISHED
+        else:
+            return self.is_actual and self.status == PUBLISHED
 
     @property
     def related_published_set(self):

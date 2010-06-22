@@ -92,11 +92,9 @@
     {% endfor %}
   </ol>
     {% if not object.comment_enabled %}
-  <p>{% trans "Comments are closed." %}</p>
     {% endif %}
   {% else %}
     {% if object.comment_enabled %}
-  <p>{% trans "Not yet comments !" %}</p>
     {% endif %}
   {% endif %}
   {% endwith %}
