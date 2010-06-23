@@ -1,7 +1,7 @@
 *.pyc
 *.vim
 *.swp
-settings.py
+/settings.py
 *.DS_Store
 */.DS_Store
 media/cms_page_media/*

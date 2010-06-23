@@ -8,20 +8,16 @@
 {% block sidebar %}
 
 <div class="categories">
-  <h3>{% trans "Categories" %}</h3>
+  <h2>{% trans "Categories" %}</h2>
   {% get_categories %}
 </div>
 <div class="calendar">
-  <h3>{% trans "Calendar" %}</h3>
+  <h2>Events Calendar</h2>
   {% get_calendar_entries %}
 </div>
 
-<div class="recents">
-  <h3>{% trans "Recent entries" %}</h3>
-  {% get_recent_entries 5 %}
-</div>
 <div class="search">
-  <h3>{% trans "Search" %}</h3>
+  <h2>{% trans "Search" %}</h2>
   <form method="get" id="searchform" action="{% url zinnia_entry_search %}">
     <p>
       <input type="text" value="{% trans "Keywords..." %}" name="pattern" id="searchbox" onfocus="this.value=''"/>
@@ -29,9 +25,5 @@
     </p>
   </form>
   </div>
-<div class="randoms">
-  <h3>{% trans "Random entries" %}</h3>
-  {% get_random_entries 5 %}
-</div>
 
 {% endblock %}

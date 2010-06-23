@@ -1,5 +1,5 @@
 {% load i18n %}
-<ul>
+<ul class="categories">
   {% for category in categories %}
   <li>
     <a href="{{ category.get_absolute_url }}" title="{{ category.title }}">{{ category.title }}</a>
