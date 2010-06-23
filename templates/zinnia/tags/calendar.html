@@ -3,14 +3,14 @@
   <div class="month-previous">
     {% if previous_month %}
 
-    <a href="{% url zinnia_entry_archive_month year=previous_month|date:"Y" month=previous_month|date:"m" %}">
+    <a href="{% url zinnia_entry_archive_month year=previous_month|date:"Y" month=previous_month|date:"m" %}" class="prev">
       &larr; {{ previous_month|date:"F Y"|capfirst }}
     </a>
     {% endif %}
   </div>
   <div class="month-next">
     {% if next_month %}
-    <a href="{% url zinnia_entry_archive_month year=next_month|date:"Y" month=next_month|date:"m" %}">
+    <a href="{% url zinnia_entry_archive_month year=next_month|date:"Y" month=next_month|date:"m" %}" class="next">
       {{ next_month|date:"F Y"|capfirst }} &rarr;
     </a>
     {% endif %}

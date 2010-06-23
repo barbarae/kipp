@@ -95,8 +95,17 @@ h1.entryTitle{padding-bottom: 0; }
 p.entryInfo{padding: 0; margin: 0 0 14px 0; font-size: .75em;}
 .entryInfo a, .entryBody a{text-decoration: none;color: #f06d00; font-weight: bold;}
 .entryInfo a:hover, .entryBody a:hover{ background: #f06d00; color: #fff; }
-td{background: #f4f0e5; text-align: center; border: 1px solid #C0A687;}
-
+td{font-size: .875em; background: #f4f0e5; padding: 8px 0; border-collapse: collapse; width: 35px; text-align: center; border: 1px solid #C0A687;}
+table { margin-bottom: .25em; table-layout:fixed; }
+thead th { background: #c3d9ff; }
+th, td, caption {font-size: .875em; }
+tr.even td { background: #e5ecf9; }
+th {font-size: .75em; font-weight: bold; }
+td.entry a{display: block; padding: 8px 2px; color: #fff; background:#C0A687; }
+td.entry a:hover{background:#F06D00;}
+td.entry{padding: 0;}
+.month-navigation .next, .month-navigation .prev{color: #F06D00; font-size:.75em;}
+.month-navigation .next:hover, .month-navigation .prev:hover{background:#f06d00; color: #fff;}
 /* FORMS */
 .contact li{overflow: hidden; margin-bottom: 10px; padding-bottom: 10px;}
 .contact label{margin-right: 10px; width: 100px; padding: 15px 5px 5px; text-transform: uppercase; font-size: .75em;}
