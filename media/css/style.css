@@ -95,7 +95,12 @@ h1.entryTitle{padding-bottom: 0; }
 p.entryInfo{padding: 0; margin: 0 0 14px 0; font-size: .75em;}
 .entryInfo a, .entryBody a{text-decoration: none;color: #f06d00; font-weight: bold;}
 .entryInfo a:hover, .entryBody a:hover{ background: #f06d00; color: #fff; }
+.categories{margin-bottom:14px;}
+    ul.categories li{font-size:0.75em;color:rgba(51, 51, 51, 0.9);}
+        ul.categories li a{color:#F06D00;text-decoration:none;font-size:1.25em;}
+
 td{font-size: .875em; background: #f4f0e5; padding: 8px 0; border-collapse: collapse; width: 35px; text-align: center; border: 1px solid #C0A687;}
+
 table { margin-bottom: .25em; table-layout:fixed; }
 thead th { background: #c3d9ff; }
 th, td, caption {font-size: .875em; }
