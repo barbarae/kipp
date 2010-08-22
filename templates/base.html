@@ -92,7 +92,7 @@
                 <span>KIPP Endeavor Academy</span>
                 <span>2700 East 18th Street</span>
                 <span>Kansas City, MO 64127</span>
-                <a href="#">See Map</a>
+                <a href="#" id="see-map">See Map</a>
                 </p>
             </div>     
             <div class="grid_3">
@@ -111,5 +111,16 @@
         </p>
     </div>
 </footer>
+<div style="display:none;">
+<div id="map"><iframe width="640" height="480" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;client=safari&amp;q=kipp+endeavor+academy&amp;ie=UTF8&amp;hq=kipp+endeavor+academy&amp;hnear=&amp;ppyss=confirm:Thank+you.+Your+edits+have+been+saved+and+will+be+public+after+they+have+been+reviewed.&amp;cid=2127332256593849120&amp;ll=39.101092,-94.54628&amp;spn=0.031772,0.054932&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br /></div>
+</div>
+<script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="{{ MEDIA_URL }}js/jquery.colorbox-min.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+    $(function(){
+        	$("#see-map").colorbox({inline:true, href:"#map"});
+    });    
+</script>
 </body>
 </html>
