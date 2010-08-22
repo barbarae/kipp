@@ -4,9 +4,10 @@
 {% block main_content %}
 <div class="content-wrap container_24 clearfix">
     <nav class="grid_5 suffix_1">
+        {{ page.id }}
         {% parent_page_title %}
         <ul>
-       {% show_menu 1 1 0 100 %}  
+        {% show_sub_menu 1 %}  
         </ul>
     </nav>
     <section class="content grid_13 suffix_1">

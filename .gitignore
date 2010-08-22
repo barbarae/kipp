@@ -1,10 +1,12 @@
 *.pyc
 *.vim
 *.swp
+*.pid
 /settings.py
 *.DS_Store
 */.DS_Store
 media/cms_page_media/*
 media/uploads/*
+media/filebrowser/*
 kipp
 

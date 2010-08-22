@@ -1,7 +1,7 @@
 
 <!DOCTYPE HTML>
 <html>
-{% load cache cms_tags menu_tags %}
+{% load cache cms_tags menu_tags kipp %}
 <head>
         <title>KIPP Endeavor Academy - {% page_attribute page_title %}</title>
         <link rel="stylesheet" href="{{ MEDIA_URL }}css/style.css" type="text/css" media="screen" charset="utf-8">
@@ -22,10 +22,10 @@
 <header class="container_24 clearfix">
         <h1 id="logo" class="grid_4"><a href="/">KIPP Endeavor Academ</a></h1>
         <nav class="grid_20">
-        <span class="enroll"><a href="#">Enroll Online</a> <span>or</span> <a href="#">Get Involved</a></span>
+        <span class="enroll"><a href="#">Enroll Online</a> <span>or</span> <a href="/get-involved/">Get Involved</a></span>
             <div class="clear"></div>
             <ul>
-                {% show_menu 0 0 0 0 %}
+                {% show_menu_below_id "main" 0 0 0 0 %}
             </ul>
         </nav>
 </header>
@@ -64,14 +64,12 @@
         <nav class="grid_12">
         <div class="grid_4">
             <ul>
-                <li><a href="#">About KIPP Endeavor</a></li>
-                <li><a href="#">Students & Families</a></li>
-                <li><a href="#">News & Events</a></li>
-                <li><a href="#">Volunteer At KIPP</a></li>
+                {% show_menu_below_id "main" 0 0 0 0 %}
             </ul>
         </div> 
         <div class="grid_4">
             <ul>
+                {% show_menu_below_id "get-involved" 0 0 0 0 %}
                 <li><a href="#">Enroll Online</a></li>
                 <li><a href="#">Download Form</a></li>
                 <li><a href="#">Teach at KIPP</a></li>
