@@ -11,6 +11,13 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta http-equiv="cache-control" content="public" />
         <meta name="robots" content="follow, all" />   
+        
+        <!--[if lte IE 8]>
+        <script>
+	    // For discussion and comments, see: http://remysharp.com/2009/01/07/html5-enabling-script/ (credit to @jdalton for minif)
+    	/*@cc_on'abbr article aside audio canvas details figcaption figure footer header hgroup mark menu meter nav output progress section summary time video'.replace(/\w+/g,function(n){document.createElement(n)})@*/
+        </script>
+        <![endif]-->
         <script type="text/javascript" src="http://use.typekit.com/fup8uby.js"></script>
         <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
         {% block extra_head  %}
