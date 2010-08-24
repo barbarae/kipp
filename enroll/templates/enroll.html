@@ -1,0 +1,37 @@
+
+<fieldset>
+    <legend>(1) Student information</legend>
+    <div>
+    {{ form.student_name.label_tag }} {{ form.student_name  }} {% if form.student_name.errors %}{{ form.student_name.errors }}{% endif %}
+    {{ form.address1.label_tag }} {{ form.address1 }} {% if form.address1.errors %}{{ form.address1.errors }}{% endif %}   
+    {{ form.address2.label_tag }} {{ form.address2 }} {% if form.address2.errors %}{{ form.address2.errors }}{% endif %}   
+    {{ form.city.label_tag }} {{ form.city }} {% if form.city.errors %}{{ form.city.errors }}{% endif %}   
+    {{ form.state.label_tag }} {{ form.state }} {% if form.state.errors %}{{ form.state.errors }}{% endif %}   
+    {{ form.zip.label_tag }} {{ form.zip }} {% if form.zip.errors %}{{ form.zip.errors }}{% endif %}   
+    </div>
+    <div>
+    {{ form.home_phone.label_tag }} {{ form.home_phone }} {% if form.home_phone.errors %}{{ form.home_phone.errors }}{% endif %}   
+    {{ form.date_of_birth.label_tag }} {{ form.date_of_birth }} {% if form.date_of_birth.errors %}{{ form.date_of_birth.errors }}{% endif %}   
+    {{ form.current_grade.label_tag }} {{ form.current_grade }} {% if form.current_grade.errors %}{{ form.current_grade.errors }}{% endif %}   
+    {{ form.current_school.label_tag }} {{ form.current_school }} {% if form.current_school.errors %}{{ form.current_school.errors }}{% endif %}   
+    </div>
+</fieldset>
+
+<fieldset>
+    <legend>(2) Parent information</legend>
+
+    <div>
+    {{ form.parent_name.label_tag }} {{ form.parent_name }} {% if form.parent_name.errors %}{{ form.parent_name.errors }}{% endif %}   
+    {{ form.parent_address1.label_tag }} {{ form.parent_address1 }} {% if form.parent_address1.errors %}{{ form.parent_address1.errors }}{% endif %}   
+    {{ form.parent_address2.label_tag }} {{ form.parent_address2 }} {% if form.parent_address2.errors %}{{ form.parent_address2.errors }}{% endif %}   
+    {{ form.parent_city.label_tag }} {{ form.parent_city }} {% if form.parent_city.errors %}{{ form.parent_city.errors }}{% endif %}   
+    {{ form.parent_state.label_tag }} {{ form.parent_state }} {% if form.parent_state.errors %}{{ form.parent_state.errors }}{% endif %}   
+    </div>
+    <div>
+    {{ form.parent_zip.label_tag }} {{ form.parent_zip }} {% if form.parent_zip.errors %}{{ form.parent_zip.errors }}{% endif %}   
+    {{ form.parent_home_phone.label_tag }} {{ form.parent_home_phone }} {% if form.parent_home_phone.errors %}{{ form.parent_home_phone.errors }}{% endif %}   
+    {{ form.parent_cell_phone.label_tag }} {{ form.parent_cell_phone }} {% if form.parent_cell_phone.errors %}{{ form.parent_cell_phone.errors }}{% endif %}   
+    {{ form.parent_work_phone.label_tag }} {{ form.parent_work_phone }} {% if form.parent_work_phone.errors %}{{ form.parent_work_phone.errors }}{% endif %}   
+    {{ form.parent_email_address.label_tag }} {{ form.parent_email_address }} {% if form.parent_email_address.errors %}{{ form.parent_email_address.errors }}{% endif %}   
+    </div>
+</fieldset>
