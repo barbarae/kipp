@@ -1,5 +1,14 @@
 from datetime import datetime
 from django.db import models
+from cms.models.pluginmodel import CMSPlugin
+
+class EnrollmentForAdmin(CMSPlugin):
+    site_email 	= models.EmailField('Email reciepient')
+    thanks = models.CharField('Message displayed on successful submit', max_length=200)
+    submit = models.CharField('Submit button value', blank=True, max_length=30)
+
+    def __unicode__(self):
+		return self.site_email
 
 
 class Enrollment(models.Model):

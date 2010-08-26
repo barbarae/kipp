@@ -1,12 +1,12 @@
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
-from models import Enrollment
+from models import Enrollment, EnrollmentForAdmin
 from forms import EnrollmentForm
 from django.core.mail import mail_managers
 
 
-class ContactPlugin(CMSPluginBase):
-    model = Enrollment
+class EnrollmentPlugin(CMSPluginBase):
+    model = EnrollmentForAdmin
     name = "Enroll Online"
     render_template = "enroll.html"
     
@@ -18,15 +18,18 @@ class ContactPlugin(CMSPluginBase):
             if form.is_valid():
                 obj = form.save()
                 mail_managers('New enrollment submission', """You've got a new enrollment application! Log in at http://kippendeavor.org/admin/ to read it.""")
+                context.update({
+                    'enroll':instance,
+                    })
                 return context
         else:
             form = EnrollmentForm()
 
         
             context.update({
-            'contact': instance,
+            'enroll': instance,
             'form': form,
                 })
             return context
     
-plugin_pool.register_plugin(ContactPlugin)
+plugin_pool.register_plugin(EnrollmentPlugin)

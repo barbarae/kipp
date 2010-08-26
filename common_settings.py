@@ -98,9 +98,7 @@ ROOT_URLCONF = 'kipp.urls'
 CMS_TEMPLATES = (
         ('page.html', gettext('default')),
         ('base.html', gettext('Home page')),
-        ('2col.html', gettext('2 Column')),
-        ('3col.html', gettext('3 Column')),
-        ('extra.html', gettext('Some extra fancy template')),
+        ('wide.html', gettext('Wide template')),
 )
 ZINNIA_MEDIA_URL = '/media/zinnia/'
 CMS_SHOW_END_DATE = True
@@ -144,8 +142,8 @@ INSTALLED_APPS = (
     'cms.plugins.snippet',
     'cms.plugins.googlemap',
     'mptt',
-    'kipp.utils',
-    'kipp.enroll',
+    'utils',
+    'enroll',
     'publisher',
     'menus',
     'typogrify',

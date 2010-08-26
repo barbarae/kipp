@@ -1,7 +1,9 @@
+{% if form %}
 
+<form action="" method="post" accept-charset="utf-8" class="enroll-form">
 <fieldset>
-    <legend>(1) Student information</legend>
-    <div>
+    <legend class="tk-league-gothic" ><span>1</span> Student information</legend>
+    <div class="first">
     {{ form.student_name.label_tag }} {{ form.student_name  }} {% if form.student_name.errors %}{{ form.student_name.errors }}{% endif %}
     {{ form.address1.label_tag }} {{ form.address1 }} {% if form.address1.errors %}{{ form.address1.errors }}{% endif %}   
     {{ form.address2.label_tag }} {{ form.address2 }} {% if form.address2.errors %}{{ form.address2.errors }}{% endif %}   
@@ -18,9 +20,9 @@
 </fieldset>
 
 <fieldset>
-    <legend>(2) Parent information</legend>
+        <legend class="tk-league-gothic"><span>2</span> Parent information</legend>
 
-    <div>
+    <div class="first">
     {{ form.parent_name.label_tag }} {{ form.parent_name }} {% if form.parent_name.errors %}{{ form.parent_name.errors }}{% endif %}   
     {{ form.parent_address1.label_tag }} {{ form.parent_address1 }} {% if form.parent_address1.errors %}{{ form.parent_address1.errors }}{% endif %}   
     {{ form.parent_address2.label_tag }} {{ form.parent_address2 }} {% if form.parent_address2.errors %}{{ form.parent_address2.errors }}{% endif %}   
@@ -35,3 +37,8 @@
     {{ form.parent_email_address.label_tag }} {{ form.parent_email_address }} {% if form.parent_email_address.errors %}{{ form.parent_email_address.errors }}{% endif %}   
     </div>
 </fieldset>
+<input class="tk-league-gothic" type="submit" name="{{ enroll.submit }}" value="{{ enroll.submit }} ">
+</form>
+{% else %}
+{{ enroll.thanks }}
+{% endif %}
