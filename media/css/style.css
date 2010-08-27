@@ -32,7 +32,8 @@ h1#logo a{display:block;width:108px;height:108px;text-indent:-9999px;background:
 header{border-bottom:6px solid #333;border-color:rgba(51,51,51,0.9);}
 header nav ul{float:right;margin-top:60px;}
 header nav li{float:left;margin-left:30px;}
-header nav li a{font-size:1.88em;color:#333333;text-transform:uppercase;text-decoration:none;display: block; padding-bottom: 10px;}
+header nav li a{font-size:1.88em;color:#333333;text-transform:uppercase;text-decoration:none;display: block; margin-bottom: 8px;padding-bottom: 2px;}
+header nav li a:hover,header nav li.ancestor a, header nav li.selected a{padding-bottom: 0;border-bottom: 2px solid #c0a687; color: #C0A687;}
 #branding{margin-top: 5px ;margin-bottom: 15px ;}
 #branding h1{font-size:3.75em;color:#333333;text-transform:uppercase; margin-top:50px;}
 #branding p{font-size:0.88em;color:#333333;line-height:1.6; padding-bottom: 10px;}
@@ -77,8 +78,9 @@ footer a.logo{float: left; width:96px; height: 96px;display:block; background: u
 section.content h1{color: #c0a687; font-size: 1.875em; font-weight: normal; text-transform: uppercase;}
 .content-wrap {padding-top: 15px;} 
 .content-wrap nav ul, .content-wrap nav h2{padding-left: 40px;}
-.content-wrap nav ul li a{color: #333333; text-transform: uppercase; font-size: .75em; display: block; text-decoration: none;padding:.325em 0; line-height: 1.4;}
+.content-wrap nav ul li a{color: #333333; text-transform: uppercase; font-size: .75em; display: block; text-decoration: none;padding:.325em; line-height: 1.4;}
 .content-wrap nav ul li a:hover,.content-wrap h2 a:hover, .entryTitle a:hover{text-decoration: underline;}
+.content-wrap nav ul li a:hover, .content-wrap nav ul li.selected a{background:#C0A687; color: white; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; }
 .content-wrap h2, .content-wrap h2 a, .entryTitle a{text-decoration: none;color: #c0a687; text-transform: uppercase;font-size: .875em; padding-top:14px ;padding-bottom:14px ;}
 .content-wrap h2 a, .entryTitle a{font-size: 1em;}
 .content h1{padding-bottom: 14px;}
@@ -126,6 +128,9 @@ td.entry{padding: 0;}
 .enroll-form div{float: left; width:320px;}
 .enroll-form div.first{margin-right: 50px;}
 .enroll-form input[type="submit"]{background: #97daef; border: none; text-transform: uppercase;font-size: 1.5em; color: #fff; cursor: pointer; width: auto; padding: 5px;}
+ul.errorlist{font-size: .7em; font-style: italic;position: relative; top: 2px;}
+.errorlist li{width: auto;background: #f10f0a;text-align: center; color: white; padding: 2px 0;border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius:3px;}
+span.optional{font-size: .7em; font-style: italic;display: block; position: relative; top:-10px;width:110px;text-align: right;}
 #map{height: 640px; padding: 20px;} 
 /*
     ColorBox Core Style

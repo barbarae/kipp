@@ -23,7 +23,7 @@ class Enrollment(models.Model):
     date_of_birth = models.CharField(max_length=255)
     current_grade = models.CharField(max_length=255)
     current_school = models.CharField(max_length=255)
-    parent_name = models.CharField(max_length=255, blank=True)
+    parent_name = models.CharField(max_length=255)
     parent_address1 = models.CharField('address', max_length=255)
     parent_address2 = models.CharField('address', max_length=255, blank=True)
     parent_city = models.CharField(max_length=100)
@@ -34,3 +34,6 @@ class Enrollment(models.Model):
     parent_work_phone = models.CharField('work phone', max_length=255, blank=True)
     parent_email_address = models.EmailField('e-mail address', max_length=75, blank=True)
     time_submitted = models.DateTimeField(default=datetime.now, editable=False)
+
+    def __unicode__(self):
+		return self.student_name

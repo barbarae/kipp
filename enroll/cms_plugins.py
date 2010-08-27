@@ -13,23 +13,19 @@ class EnrollmentPlugin(CMSPluginBase):
     def render(self, context, instance, placeholder):
         request = context['request']
 
-        if request.method == "POST":
-            form = EnrollmentForm(request.POST)
-            if form.is_valid():
-                obj = form.save()
-                mail_managers('New enrollment submission', """You've got a new enrollment application! Log in at http://kippendeavor.org/admin/ to read it.""")
-                context.update({
-                    'enroll':instance,
-                    })
-                return context
-        else:
-            form = EnrollmentForm()
-
-        
+        form = EnrollmentForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+           # mail_managers('New enrollment submission', """You've got a new enrollment application! Log in at http://kippendeavor.org/admin/ to read it.""")
             context.update({
-            'enroll': instance,
-            'form': form,
+                'enroll':instance,
+                'form':None,
                 })
             return context
+        context.update({
+            'enroll': instance,
+            'form': form,
+            })
+        return context
     
 plugin_pool.register_plugin(EnrollmentPlugin)
