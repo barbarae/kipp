@@ -7,20 +7,12 @@
     </a>
   </h1>
   <p class="entryInfo">
-    {% trans "Written by" %} 
-    {% for author in object.authors.all %}
-    <a href="{% url zinnia_author_detail author %}" title="{% blocktrans with author as author %}Show {{ author }} entries{% endblocktrans %}">
-      <strong>{{ author }}</strong>
-    </a>{% if not forloop.last %}, {% endif %}
-    {% endfor %}
-    {% trans "on date" %} {{ object.creation_date|date:"F d, Y"|capfirst }}
+    {% trans "Posted" %} 
+    {% trans "on" %} {{ object.creation_date|date:"F d, Y"|capfirst }}
     {% trans "in" %} 
     {% for category in object.categories.all %}
-    <a href="{{ category.get_absolute_url }}" title="{{ category }}">
-      <em>{{ category }}</em>
-    </a>
-    {% if not forloop.last %}, {% endif %}
-    {% endfor %}.
+    <a href="{{ category.get_absolute_url }}" title="{{ category }}"><em>{{ category }}</em></a>{% if not forloop.last %}, {% endif %}
+    {% endfor %}
   </p>
 
 <div class="entryBody span-16 last">

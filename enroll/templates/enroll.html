@@ -21,7 +21,6 @@
     <div>
         {% if form.home_phone.errors %}{{ form.home_phone.errors }}{% endif %}
         {{ form.home_phone.label_tag }} {{ form.home_phone }}
-        <span class="optional">optional</span>   
         {% if form.date_of_birth.errors %}{{ form.date_of_birth.errors }}{% endif %}   
         {{ form.date_of_birth.label_tag }} {{ form.date_of_birth }}
         {% if form.current_grade.errors %}{{ form.current_grade.errors }}{% endif %}   

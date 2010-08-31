@@ -46,7 +46,7 @@
             </div>
 </section>
 <section id="news" >
-<h2 class="tagline">Be the change you wish to see in the world. -Ghandi</h2>  
+<h2 class="tagline">{% placeholder mission %}</h2>  
 <div class="container_24 clearfix">
 <div class="mission grid_7 suffix_1">
         {% placeholder mission %}
@@ -65,29 +65,25 @@
 </section>
 
 {% endblock %}
+<div class="spacer"></div>
 </div>
 <footer>
     <div class="container_24 clearfix">
         <nav class="grid_12">
         <div class="grid_4">
             <ul>
-                {% show_menu_below_id "main" 0 0 0 0 %}
+                {% show_menu 0 0 100 100 'menu/footer.html' %}
             </ul>
         </div> 
         <div class="grid_4">
             <ul>
-                {% show_menu_below_id "get-involved" 0 0 0 0 %}
-                <li><a href="#">Enroll Online</a></li>
-                <li><a href="#">Download Form</a></li>
-                <li><a href="#">Teach at KIPP</a></li>
-                <li><a href="#">PowerSchool Login</a></li>
+                {% show_menu 1 1 100 100 'menu/footer.html' %}
             </ul>
         </div>
         <div class="grid_3">
-            <ul>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Support KIPP</a></li>
+             <ul>
+                {% show_menu 2 2 100 100 'menu/footer.html' %}
+                <li><a href="#">Power School Login</a></li>
             </ul>
         </div>
         </nav>

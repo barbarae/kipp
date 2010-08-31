@@ -16,33 +16,18 @@
   {% endwith %}
 </div>
 
-<hr />
-
 <div class="entryWidgets span-16 last">
-  {% if object.next_entry %}
-  <div class="entryNext">
-    <h3>{% trans "Next entry" %}</h3>
-    <ul>
-      <li>
-	<a href="{{ object.next_entry.get_absolute_url }}" title="{{ object.next_entry.title }}">
-	  {{ object.next_entry.title }}
-	</a>
-      </li>
-    </ul>
-  </div>
-  {% endif %}
   {% if object.previous_entry %}
-  <div class="entryPrevious">
-    <h3>{% trans "Previous entry" %}</h3>
-    <ul>
-      <li>
-	<a href="{{ object.previous_entry.get_absolute_url }}" title="{{ object.previous_entry.title }}">
-	  {{ object.previous_entry.title }}
+	<a class="entryPrevious" href="{{ object.previous_entry.get_absolute_url }}" title="{{ object.previous_entry.title }}">
+	  &larr; {{ object.previous_entry.title }}
 	</a>
-      </li>
-    </ul>
-  </div>
   {% endif %}
+  {% if object.next_entry %}
+	<a class="entryNext" href="{{ object.next_entry.get_absolute_url }}" title="{{ object.next_entry.title }}">
+	  {{ object.next_entry.title }} &rarr;
+	</a>
+  {% endif %}
+  <div class="clear"></div>
   {% if object.related_published_set %}
   <div class="entryRelated">
     <h3>{% trans "Related entries" %}</h3>
@@ -55,14 +40,13 @@
     </ul>
   </div>
   {% endif %}
-  <div class="entrySimilar">
+  <!--{#  <div class="entrySimilar">
     <h3>{% trans "Similar entries" %}</h3>
     {% get_similar_entries 5 %}
-  </div>
+  </div>#}-->
 </div>
 
-<hr />
-
+ <!--{# 
 <div id="comments" class="span-16 last">
   <h3>{% trans "Comments" %}</h3>
   {% with object.comments as comment_list %}
@@ -105,5 +89,5 @@
   {% render_comment_form for object %}
 </div>
 {% endif %}
-
+#}-->
 {% endblock %}

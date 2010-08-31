@@ -2,9 +2,7 @@
 <h2>News <span class="amp">&amp;</span> Events</h2>
   {% for entry in entries %}
   <article class="entry">
-  <span class="date">{{ entry.start_publication|date:"F g, Y" }} by {% for a in entry.authors.all %}
-          {{a}}
-  {% endfor %}{{ entry.author }}</span>
+  <span class="date">{{ entry.start_publication|date:"F g, Y" }}</span>
     <a href="{{ entry.get_absolute_url }}" title="{{ entry.title }}" class="title">{{ entry.title|typogrify }}</a>
     <p>{{ entry.excerpt|typogrify }}</p>
     <a href="{{ entry.get_absolute_url }}" class="more">Read more</a>

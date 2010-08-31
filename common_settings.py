@@ -47,6 +47,12 @@ MEDIA_URL = '/media/'
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/admin_media/'
+DEFAULT_FROM_EMAIL = 'kipp@designiseasy.com'
+EMAIL_HOST= 'smtp.gmail.com'
+EMAIL_HOST_USER = 'kipp@designiseasy.com'
+EMAIL_HOST_PASSWORD = 'k1ppl3@rn'
+EMAIL_PORT = '587'
+EMAIL_USE_TLS = True
 
 URL_FILEBROWSER_MEDIA = '/media/'
 FILEBROWSER_URL_FILEBROWSER_MEDIA = '/media/filebrowser/'

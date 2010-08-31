@@ -3,7 +3,7 @@ from django.db import models
 from cms.models.pluginmodel import CMSPlugin
 
 class EnrollmentForAdmin(CMSPlugin):
-    site_email 	= models.EmailField('Email reciepient')
+    site_email 	= models.EmailField('Email recipient')
     thanks = models.CharField('Message displayed on successful submit', max_length=200)
     submit = models.CharField('Submit button value', blank=True, max_length=30)
 

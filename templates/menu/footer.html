@@ -1,16 +1,9 @@
 {% load menu_tags %}
 {% for child in children %}
-{% if child.ancestor %}
-
-{{ child.ancestor.get_menu_title }}
-{% endif %}
 <li class="{% if child.selected %}selected{% endif %}{% if child.ancestor %}ancestor{% endif %}{% if child.sibling %}sibling{% endif %}{% if child.descendant %}descendant{% endif %}">
 	<a href="{{ child.get_absolute_url }}">{{ child.get_menu_title }}</a>
-	{% if child.childrens %}
-    <ul>
+	{% if child.children %}
         {% show_menu from_level to_level extra_inactive extra_active template "" "" child %}
-    </ul>
     {% endif %}
 </li>
 {% endfor %}
-
