@@ -4,13 +4,12 @@
 {% block main_content %}
 <div class="content-wrap container_24 clearfix">
     <nav class="grid_5 suffix_1">
+        {% parent_page_title %}
         {% ifequal parent_page.get_menu_title "Get Involved"  %}
-        {% parent_page_title 100 0 %}
         <ul>
             {% show_kipp_sub_menu 100 0 %}  
         </ul>
         {% else %}
-        {% parent_page_title 100 1%}
         <ul>
             {% show_kipp_sub_menu 100 1 %}  
         </ul>

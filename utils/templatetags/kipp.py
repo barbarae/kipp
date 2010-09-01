@@ -17,11 +17,13 @@ def parent_page_title(context,levels=100, root_level=0,):
     nodes = menu_pool.get_nodes(request)
     parent_node = None
     for node in nodes:
-        if (node.ancestor and node.level == root_level) or (node.selected and node.level == root_level):
+        if (node.ancestor and node.level == 1) or (node.selected and node.level == 1):
         #if (node.level == 1) or (node.get_attribute("reverse_id")=="get-involved"): 
             #if (node.ancestor) or (node.selected):
             parent_node = node
-                
+        if node.get_attribute("reverse_id")=="get-involved" and node.level == root_level and node.selected:
+            parent_node = node
+
     context.update({"parent_page":parent_node})
     return context
 
