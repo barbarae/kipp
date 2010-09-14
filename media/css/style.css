@@ -85,7 +85,8 @@ section.content h1{color: #c0a687; font-size: 1.875em; font-weight: normal; text
 .content-wrap h2, .content-wrap h2 a, .entryTitle a{text-decoration: none;color: #c0a687; text-transform: uppercase;font-size: .875em; padding-top:14px ;padding-bottom:14px ;position: relative;}
 .content-wrap h2 a, .entryTitle a{font-size: 1em;}
 .content h1{padding-bottom: 14px;}
-.content p{font-size: .875em; line-height: 1.4; padding-bottom: 1em;}
+.content p, .content ul{font-size: .875em; line-height: 1.4; padding-bottom: 1em;}
+.content ul ul{font-size: 1em;}
 
 h2.students-families{background: url(../images/stud-fam.png) top left no-repeat;}
 h2.about-kipp-endeavor{background: url(../images/about.png) top left no-repeat;}
