@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load cms_tags menu_tags cache kipp %}
+{% block body_class %}{% page_attribute slug %}{% endblock %}
+{% block main_content %}
+<div class="content-wrap container_24 clearfix">
+    <section class="content grid_19 suffix_1">
+    <h1>404 - Page Not Found</h1>
+    <p>Sorry about that, the page you were looking for could not be found. Let's head back to the <a href="/">home page</a>.</p>
+    </section>
+</div>
+{% endblock %}
+
