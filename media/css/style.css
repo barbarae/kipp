@@ -86,6 +86,7 @@ section.content h1{color: #c0a687; font-size: 1.875em; font-weight: normal; text
 .content-wrap h2 a, .entryTitle a{font-size: 1em;}
 .content h1{padding-bottom: 14px;}
 .content p, .content ul{font-size: .875em; line-height: 1.4; padding-bottom: 1em;}
+.content ul{margin-left: 30px;}
 .content ul ul{font-size: 1em;}
 
 h2.students-families{background: url(../images/stud-fam.png) top left no-repeat;}
