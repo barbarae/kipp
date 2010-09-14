@@ -89,6 +89,7 @@ section.content h1{color: #c0a687; font-size: 1.875em; font-weight: normal; text
 .content ul{margin-left: 30px;}
 .content ul ul{font-size: 1em;}
 .content a{color: #F1730A;}
+.content a:hover{background: #F1730A;color: white;}
 h2.students-families{background: url(../images/stud-fam.png) top left no-repeat;}
 h2.about-kipp-endeavor{background: url(../images/about.png) top left no-repeat;}
 
