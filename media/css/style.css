@@ -97,7 +97,7 @@ h2.about-kipp-endeavor{background: url(../images/about.png) top left no-repeat;}
 
 /* BLOG STYLES */
 h1.entryTitle{padding-bottom: 0; }
-.entryWidgets{border-radius: 6px;-webkit-border-radius: 6px; -moz-border-radius:6px; background: #efe7d4;padding: 1em .325em;}
+.entryWidgets{border-top: 3px solid #333; padding: 1em .325em;}
 .entryTitle a, .entryWidgets a{font-size: .75em; padding: 3px; display: inline-block;border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; color: #f06d00;}
 .entryWidgets h3{font-size: 1em; color: #c0a687; margin-top: 1em;}
 .entryTitle a, .entryWidgets a:visited{color: #C0A687;}
