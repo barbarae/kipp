@@ -2,10 +2,12 @@ from django.conf.urls.defaults import *
 from django.conf import settings
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
+from cms.sitemaps import CMSSitemap
 admin.autodiscover()
 
 
 urlpatterns = patterns('',
+    url(r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': {'cmspages': CMSSitemap}}),
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
     url(r'^comments/', include('django.contrib.comments.urls')),
     (r'^admin/filebrowser/', include('filebrowser.urls')),
