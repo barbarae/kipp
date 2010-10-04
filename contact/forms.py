@@ -1,5 +1,6 @@
 from django import forms
 from django.core.mail import EmailMessage
+from django.template.loader import render_to_string
   
 class ContactForm(forms.Form):
 	email 	= forms.EmailField()
